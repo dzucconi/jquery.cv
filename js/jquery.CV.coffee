@@ -1,6 +1,6 @@
 # Name    : CV
 # Author  : Damon Zucconi, http://www.damonzucconi.com, @dzucconi
-# Version : 0.01
+# Version : 0.0.1
 # Repo    : http://github.com/dzucconi/jquery.CV
 
 jQuery ->
@@ -51,6 +51,8 @@ jQuery ->
 
       cv = new CV(@settings["key"])
 
+      @$el.html "Loading"
+
       $.when(cv.fetch()).then =>
         renders = _.map cv.categories, (category) =>
           @settings["templates"].category(category: category)
@@ -59,7 +61,6 @@ jQuery ->
 
     @init()
 
-  # Defaults
   $.CV::defaults =
     templates:
       category: _.template """
