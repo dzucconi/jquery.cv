@@ -82,23 +82,14 @@
 
     })();
     $.CV = function(el, options) {
-      var state,
-        _this = this;
+      var _this = this;
 
-      state = "";
-      this.setState = function(_state) {
-        return state = _state;
-      };
-      this.getState = function() {
-        return state;
-      };
       this.settings = {};
       this.$el = $(el);
       this.init = function() {
         var cv;
 
         _this.settings = $.extend({}, _this.defaults, options);
-        _this.setState("ready");
         cv = new CV(_this.settings["key"]);
         return $.when(cv.fetch()).then(function() {
           var renders;

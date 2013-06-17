@@ -57,19 +57,12 @@ jQuery ->
       @name = entries[0].year
       @entries = entries
 
-
   $.CV = (el, options) ->
-    state = ""
-    @setState = (_state) -> state = _state
-    @getState = -> state
-
     @settings = {}
     @$el = $(el)
 
     @init = =>
       @settings = $.extend({}, @defaults, options)
-
-      @setState("ready")
 
       cv = new CV(@settings["key"])
 
