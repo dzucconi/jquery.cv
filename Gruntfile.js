@@ -1,19 +1,16 @@
-/*global module:false*/
-module.exports = function(grunt) {
-  // Project configuration.
+module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     uglify: {
       plugin: {
         files: [{
-          expand: true,
-          cwd: 'js/',
-          src: '*.js',
-          dest: 'js/',
-          ext: '.min.js'
+          'js/jquery.CV.min.js': ['js/jquery.CV.js']
         }],
+
         options: {
-          banner : '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+          banner:
+            '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
             '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
@@ -21,8 +18,9 @@ module.exports = function(grunt) {
         }
       }
     },
-    coffee : {
-      plugin : {
+
+    coffee: {
+      plugin: {
         files: [{
           expand: true,
           cwd: 'js/',
@@ -31,7 +29,8 @@ module.exports = function(grunt) {
           ext: '.js'
         }]
       },
-      specs : {
+
+      specs: {
         files: [{
           expand: true,
           cwd: 'spec/coffeescripts/',
@@ -40,7 +39,8 @@ module.exports = function(grunt) {
           ext: '.js'
         }]
       },
-      helpers : {
+
+      helpers: {
         files: [{
           expand: true,
           cwd: 'spec/coffeescripts/helpers/',
@@ -50,18 +50,21 @@ module.exports = function(grunt) {
         }]
       }
     },
-    watch : {
+
+    watch: {
       files: [
         'js/*.coffee',
         'spec/coffeescripts/*.coffee',
         'spec/coffeescripts/helpers/*.coffee'
       ],
+
       tasks: ['coffee', 'growl:coffee']
     },
-    growl : {
-      coffee : {
-        title   : 'CoffeeScript',
-        message : 'Compiled successfully'
+
+    growl: {
+      coffee: {
+        title: 'CoffeeScript',
+        message: 'Compiled successfully'
       }
     }
   });
