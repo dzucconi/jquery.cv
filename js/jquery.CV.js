@@ -68,7 +68,6 @@
     $.CV = function(el, options) {
       var _this = this;
 
-      this.settings = {};
       this.$el = $(el);
       this.init = function() {
         var cv;
@@ -86,8 +85,7 @@
           return _this.$el.html(renders);
         });
       };
-      this.init();
-      return this;
+      return this.init();
     };
     $.CV.prototype.defaults = {
       key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c",

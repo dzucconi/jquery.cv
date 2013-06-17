@@ -1,10 +1,14 @@
 body {
-  font-family: sans-serif;
-  background-color: #fff;
-  color: #000;
+  margin: 4em;
+  padding: 0;
+  font-family: monospace;
 }
 
-#container {
-  width: 960px;
-  margin: 0 auto;
+.category {
+  margin: 4em 0 1em 0;
+}
+
+.year > h4 {
+  font-size: 1em;
+  margin: 2em 0 1em 0;
 }

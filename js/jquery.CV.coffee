@@ -16,7 +16,6 @@ jQuery ->
         objects = $.csv.toObjects(response)
 
         @rows = $.map(objects, (object) -> new CV.Row(object))
-
         @categories = _.chain(@rows)
           .groupBy("type")
           .map((category) -> new CV.Category(category))
@@ -44,7 +43,6 @@ jQuery ->
       @entries = entries
 
   $.CV = (el, options) ->
-    @settings = {}
     @$el = $(el)
 
     @init = =>
@@ -59,8 +57,6 @@ jQuery ->
         @$el.html renders
 
     @init()
-
-    this # Chainable
 
   # Defaults
   $.CV::defaults =

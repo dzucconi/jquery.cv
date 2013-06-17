@@ -1,5 +1,5 @@
 /*global module:false*/
-module.exports = function(grunt) { 
+module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -50,45 +50,30 @@ module.exports = function(grunt) {
         }]
       }
     },
-    jasmine : {
-      src     : ['js/libs/*.js', 'spec/javascripts/libs/*.js', 'js/*[^(min)].js'],
-      options : {
-        specs   : 'spec/javascripts/**/*.js',
-        helpers : 'spec/javascripts/helpers/**/*.js'
-      }
-    },
     watch : {
       files: [
-        'js/*.coffee', 
-        'spec/coffeescripts/*.coffee', 
+        'js/*.coffee',
+        'spec/coffeescripts/*.coffee',
         'spec/coffeescripts/helpers/*.coffee'
       ],
-      tasks: ['coffee', 'growl:coffee', 'jasmine', 'growl:jasmine']
+      tasks: ['coffee', 'growl:coffee']
     },
     growl : {
       coffee : {
         title   : 'CoffeeScript',
         message : 'Compiled successfully'
-      },
-      jasmine : {
-        title   : 'Jasmine',
-        message : 'Tests passed successfully'
       }
     }
   });
 
-  // Lib tasks.
+  // Lib tasks
   grunt.loadNpmTasks('grunt-growl');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default and Build tasks
-  mainTasks = ['coffee', 'growl:coffee', 'jasmine', 'growl:jasmine']
+  mainTasks = ['coffee', 'growl:coffee']
   grunt.registerTask('default', mainTasks);
   grunt.registerTask('build', mainTasks.concat(['uglify']));
-
-  // Travis CI task.
-  grunt.registerTask('travis', ['coffee', 'jasmine']);
 };
