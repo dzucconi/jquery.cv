@@ -3,17 +3,6 @@
 # Version : 0.01
 # Repo    : http://github.com/dzucconi/jquery.CV
 
-_.groupByMulti = (obj, values, context) ->
-  return obj unless values.length
-
-  byFirst = _.groupBy(obj, values[0], context)
-  rest = values.slice(1)
-
-  for prop of byFirst
-    byFirst[prop] = _.groupByMulti(byFirst[prop], rest, context)
-
-  byFirst
-
 jQuery ->
   class CV
     constructor: (key) ->
