@@ -6,15 +6,19 @@ Requires jQuery, jQuery.csv, and Underscore.
 
 ## Documenation
 
-- Basic usage
+Basic usage:
 
-    https://docs.google.com/spreadsheet/pub?key=0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c
+```
+https://docs.google.com/spreadsheet/pub?key=0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c
+```
 
 ```javascript
 $("#element").CV({
   key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"
 });
 ```
+
+Use your own templates:
 
 ```javascript
 $("#element").CV({
