@@ -22,11 +22,8 @@ jQuery ->
           .map((category) -> new CV.Category(category))
           .value()
 
-      ).error((response) ->
-        console.log "Error"
-
-      ).complete ->
-        console.log "Complete"
+      ).error (response) ->
+        console.log "Error", response
 
   class CV.Row
     constructor: (object) ->

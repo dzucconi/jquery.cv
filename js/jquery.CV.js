@@ -25,9 +25,7 @@
             return new CV.Category(category);
           }).value();
         }).error(function(response) {
-          return console.log("Error");
-        }).complete(function() {
-          return console.log("Complete");
+          return console.log("Error", response);
         });
       };
 
