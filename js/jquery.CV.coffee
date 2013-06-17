@@ -30,7 +30,7 @@ jQuery ->
 
         @categories = _.chain(@rows)
           .groupBy("type")
-          .map((category) -> new CV.Group(category, "category"))
+          .map((category) -> new CV.Category(category))
           .value()
 
       ).error((response) ->
@@ -44,10 +44,19 @@ jQuery ->
       for k, v of object
         @[k.toLowerCase()] = v.trim()
 
-  class CV.Group
-    constructor: (rows, attribute) ->
-      @name = rows[0][attribute]
-      @rows = rows
+  class CV.Category
+    constructor: (entries) ->
+      @name = entries[0].category
+      @years = _.chain(entries)
+        .groupBy("year")
+        .map((year) -> new CV.Category.Year(year))
+        .value().reverse()
+
+  class CV.Category.Year
+    constructor: (entries) ->
+      @name = entries[0].year
+      @entries = entries
+
 
   $.CV = (el, options) ->
     state = ""
@@ -82,28 +91,34 @@ jQuery ->
         <div class="category">
           <h3><%= category.name %></h3>
 
-          <% _.each(category.rows, function(row) { %>
-            <%= $.CV.prototype.defaults.templates.row({ row: row }) %>
+          <% _.each(category.years, function(year) { %>
+            <div class="year">
+              <h4><%= year.name %></h4>
+
+              <% _.each(year.entries, function(entry) { %>
+                <%= $.CV.prototype.defaults.templates.entry({ entry: entry }) %>
+              <% }) %>
+            </div>
           <% }); %>
         </div>
       """
 
-      row: _.template """
-        <div class="row">
-          <% if (row.url) { %>
-            <a href="<%= row.url %>" target="_blank"><%= row.title %></a>,
+      entry: _.template """
+        <div class="entry">
+          <% if (entry.url) { %>
+            <a href="<%= entry.url %>" target="_blank"><%= entry.title %></a>,
           <% } else { %>
-            <u><%= row.title %></u>,
+            <u><%= entry.title %></u>,
           <% } %>
 
-          <%= row.venue %>
+          <%= entry.venue %>
 
-          <% if (row.city && row.country) { %>
-            (<%= row.city %>, <%= row.country %>)
+          <% if (entry.city && entry.country) { %>
+            (<%= entry.city %>, <%= entry.country %>)
           <% } %>
 
-          <% if (row.notes) { %>
-            - <%= row.notes %>
+          <% if (entry.notes) { %>
+            - <%= entry.notes %>
           <% } %>
         </div>
       """

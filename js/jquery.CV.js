@@ -36,7 +36,7 @@
             return new CV.Row(object);
           });
           return _this.categories = _.chain(_this.rows).groupBy("type").map(function(category) {
-            return new CV.Group(category, "category");
+            return new CV.Category(category);
           }).value();
         }).error(function(response) {
           return console.log("Error");
@@ -61,13 +61,24 @@
       return Row;
 
     })();
-    CV.Group = (function() {
-      function Group(rows, attribute) {
-        this.name = rows[0][attribute];
-        this.rows = rows;
+    CV.Category = (function() {
+      function Category(entries) {
+        this.name = entries[0].category;
+        this.years = _.chain(entries).groupBy("year").map(function(year) {
+          return new CV.Category.Year(year);
+        }).value().reverse();
       }
 
-      return Group;
+      return Category;
+
+    })();
+    CV.Category.Year = (function() {
+      function Year(entries) {
+        this.name = entries[0].year;
+        this.entries = entries;
+      }
+
+      return Year;
 
     })();
     $.CV = function(el, options) {
@@ -106,8 +117,8 @@
     $.CV.prototype.defaults = {
       key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c",
       templates: {
-        category: _.template("<div class=\"category\">\n  <h3><%= category.name %></h3>\n\n  <% _.each(category.rows, function(row) { %>\n    <%= $.CV.prototype.defaults.templates.row({ row: row }) %>\n  <% }); %>\n</div>"),
-        row: _.template("<div class=\"row\">\n  <% if (row.url) { %>\n    <a href=\"<%= row.url %>\" target=\"_blank\"><%= row.title %></a>,\n  <% } else { %>\n    <u><%= row.title %></u>,\n  <% } %>\n\n  <%= row.venue %>\n\n  <% if (row.city && row.country) { %>\n    (<%= row.city %>, <%= row.country %>)\n  <% } %>\n\n  <% if (row.notes) { %>\n    - <%= row.notes %>\n  <% } %>\n</div>")
+        category: _.template("<div class=\"category\">\n  <h3><%= category.name %></h3>\n\n  <% _.each(category.years, function(year) { %>\n    <div class=\"year\">\n      <h4><%= year.name %></h4>\n\n      <% _.each(year.entries, function(entry) { %>\n        <%= $.CV.prototype.defaults.templates.entry({ entry: entry }) %>\n      <% }) %>\n    </div>\n  <% }); %>\n</div>"),
+        entry: _.template("<div class=\"entry\">\n  <% if (entry.url) { %>\n    <a href=\"<%= entry.url %>\" target=\"_blank\"><%= entry.title %></a>,\n  <% } else { %>\n    <u><%= entry.title %></u>,\n  <% } %>\n\n  <%= entry.venue %>\n\n  <% if (entry.city && entry.country) { %>\n    (<%= entry.city %>, <%= entry.country %>)\n  <% } %>\n\n  <% if (entry.notes) { %>\n    - <%= entry.notes %>\n  <% } %>\n</div>")
       }
     };
     return $.fn.CV = function(options) {
