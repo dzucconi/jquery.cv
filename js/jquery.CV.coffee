@@ -1,7 +1,7 @@
 # Name    : CV
 # Author  : Damon Zucconi, http://www.damonzucconi.com, @dzucconi
 # Version : 0.0.1
-# Repo    : http://github.com/dzucconi/jquery.CV
+# Repo    : http://github.com/dzucconi/jquery.cv
 
 jQuery ->
   class CV
@@ -41,7 +41,7 @@ jQuery ->
       @name = entries[0].year
       @entries = entries
 
-  $.CV = (el, options) ->
+  $.cv = (el, options) ->
     @$el = $(el)
 
     @init = =>
@@ -61,7 +61,7 @@ jQuery ->
 
     @init()
 
-  $.CV::defaults =
+  $.cv::defaults =
     templates:
       category: _.template """
         <div class="category">
@@ -72,7 +72,7 @@ jQuery ->
               <h4><%= year.name %></h4>
 
               <% _.each(year.entries, function(entry) { %>
-                <%= $.CV.prototype.defaults.templates.entry({ entry: entry }) %>
+                <%= $.cv.prototype.defaults.templates.entry({ entry: entry }) %>
               <% }) %>
             </div>
           <% }); %>
@@ -99,9 +99,9 @@ jQuery ->
         </div>
       """
 
-  $.fn.CV = (options) ->
+  $.fn.cv = (options) ->
     @each ->
       if $(this).data("CV") is undefined
-        plugin = new $.CV(this, options)
+        plugin = new $.cv(this, options)
 
         $(this).data("CV", plugin)

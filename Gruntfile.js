@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     uglify: {
       plugin: {
         files: [{
-          'js/jquery.CV.min.js': ['js/jquery.CV.js']
+          'js/jquery.cv.min.js': ['js/jquery.cv.js']
         }],
 
         options: {

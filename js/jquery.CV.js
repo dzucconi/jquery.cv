@@ -63,7 +63,7 @@
       return Year;
 
     })();
-    $.CV = function(el, options) {
+    $.cv = function(el, options) {
       var _this = this;
 
       this.$el = $(el);
@@ -89,18 +89,18 @@
       };
       return this.init();
     };
-    $.CV.prototype.defaults = {
+    $.cv.prototype.defaults = {
       templates: {
-        category: _.template("<div class=\"category\">\n  <h3><%= category.name %></h3>\n\n  <% _.each(category.years, function(year) { %>\n    <div class=\"year\">\n      <h4><%= year.name %></h4>\n\n      <% _.each(year.entries, function(entry) { %>\n        <%= $.CV.prototype.defaults.templates.entry({ entry: entry }) %>\n      <% }) %>\n    </div>\n  <% }); %>\n</div>"),
+        category: _.template("<div class=\"category\">\n  <h3><%= category.name %></h3>\n\n  <% _.each(category.years, function(year) { %>\n    <div class=\"year\">\n      <h4><%= year.name %></h4>\n\n      <% _.each(year.entries, function(entry) { %>\n        <%= $.cv.prototype.defaults.templates.entry({ entry: entry }) %>\n      <% }) %>\n    </div>\n  <% }); %>\n</div>"),
         entry: _.template("<div class=\"entry\">\n  <% if (entry.url) { %>\n    <a href=\"<%= entry.url %>\" target=\"_blank\"><%= entry.title %></a>,\n  <% } else { %>\n    <u><%= entry.title %></u>,\n  <% } %>\n\n  <%= entry.venue %>\n\n  <% if (entry.city && entry.country) { %>\n    (<%= entry.city %>, <%= entry.country %>)\n  <% } %>\n\n  <% if (entry.notes) { %>\n    - <%= entry.notes %>\n  <% } %>\n</div>")
       }
     };
-    return $.fn.CV = function(options) {
+    return $.fn.cv = function(options) {
       return this.each(function() {
         var plugin;
 
         if ($(this).data("CV") === void 0) {
-          plugin = new $.CV(this, options);
+          plugin = new $.cv(this, options);
           return $(this).data("CV", plugin);
         }
       });

@@ -1,6 +1,6 @@
 {
-  "name"            : "jquery.CV",
-  "title"           : "jquery.CV",
+  "name"            : "jquery.cv",
+  "title"           : "jquery.cv",
   "version"         : "0.0.1",
   "description" : "",
   "keywords": [],
@@ -12,11 +12,11 @@
   },
   "repository" : {
     "type" : "git",
-    "url"  : "git://github.com/dzucconi/jquery.CV.git"
+    "url"  : "git://github.com/dzucconi/jquery.cv.git"
   },
   "bugs" : {
-    "url" : "https://github.com/dzucconi/jquery.CV/issues",
-    "url": "https://github.com/dzucconi/jquery.CV/blob/master/LICENSE-MIT"
+    "url" : "https://github.com/dzucconi/jquery.cv/issues",
+    "url": "https://github.com/dzucconi/jquery.cv/blob/master/LICENSE-MIT"
   },
   "licenses": [{
     "type": "MIT"
