@@ -75,6 +75,7 @@
           throw "Missing key";
         }
         cv = new CV(_this.settings["key"]);
+        _this.$el.html("Loading");
         return $.when(cv.fetch()).then(function() {
           var renders;
 

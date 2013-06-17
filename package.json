@@ -1,0 +1,32 @@
+{
+  "name"            : "jquery.CV",
+  "title"           : "jquery.CV",
+  "version"         : "0.0.1",
+  "description" : "",
+  "keywords": [],
+  "homepage"        : "",
+  "author"          : {
+    "name"  : "Damon Zucconi",
+    "email" : "mail@damonzucconi.com",
+    "url"   : "http://www.damonzucconi.com"
+  },
+  "repository" : {
+    "type" : "git",
+    "url"  : "git://github.com/dzucconi/jquery.CV.git"
+  },
+  "bugs" : {
+    "url" : "https://github.com/dzucconi/jquery.CV/issues",
+    "url": "https://github.com/dzucconi/jquery.CV/blob/master/LICENSE-MIT"
+  },
+  "licenses": [{
+    "type": "MIT"
+  }],
+  "devDependencies" : {
+    "grunt"                : "0.4.1",
+    "grunt-cli"            : "0.1.9",
+    "grunt-contrib-watch"  : "0.4.4",
+    "grunt-contrib-coffee" : "0.7.0",
+    "grunt-contrib-uglify" : "0.2.2",
+    "grunt-growl"          : "0.1.5"
+  }
+}
