@@ -48,6 +48,8 @@ jQuery ->
     @init = =>
       @settings = $.extend({}, @defaults, options)
 
+      throw "Missing key" if @settings["key"] is undefined
+
       cv = new CV(@settings["key"])
 
       $.when(cv.fetch()).then =>
@@ -60,7 +62,6 @@ jQuery ->
 
   # Defaults
   $.CV::defaults =
-    key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"
     templates:
       category: _.template """
         <div class="category">

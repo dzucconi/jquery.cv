@@ -73,6 +73,9 @@
         var cv;
 
         _this.settings = $.extend({}, _this.defaults, options);
+        if (_this.settings["key"] === void 0) {
+          throw "Missing key";
+        }
         cv = new CV(_this.settings["key"]);
         return $.when(cv.fetch()).then(function() {
           var renders;
@@ -88,7 +91,6 @@
       return this.init();
     };
     $.CV.prototype.defaults = {
-      key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c",
       templates: {
         category: _.template("<div class=\"category\">\n  <h3><%= category.name %></h3>\n\n  <% _.each(category.years, function(year) { %>\n    <div class=\"year\">\n      <h4><%= year.name %></h4>\n\n      <% _.each(year.entries, function(entry) { %>\n        <%= $.CV.prototype.defaults.templates.entry({ entry: entry }) %>\n      <% }) %>\n    </div>\n  <% }); %>\n</div>"),
         entry: _.template("<div class=\"entry\">\n  <% if (entry.url) { %>\n    <a href=\"<%= entry.url %>\" target=\"_blank\"><%= entry.title %></a>,\n  <% } else { %>\n    <u><%= entry.title %></u>,\n  <% } %>\n\n  <%= entry.venue %>\n\n  <% if (entry.city && entry.country) { %>\n    (<%= entry.city %>, <%= entry.country %>)\n  <% } %>\n\n  <% if (entry.notes) { %>\n    - <%= entry.notes %>\n  <% } %>\n</div>")
