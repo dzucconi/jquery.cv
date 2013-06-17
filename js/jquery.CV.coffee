@@ -12,17 +12,16 @@ jQuery ->
       $.ajax(
         url: "https://spreadsheets.google.com/pub?key=#{@key}&hl=en&output=csv"
         method: "get"
-      ).done((response) =>
+      ).done (response) =>
         objects = $.csv.toObjects(response)
 
-        @rows = $.map(objects, (object) -> new CV.Row(object))
+        @rows = $.map objects, (object) ->
+          new CV.Row(object)
+
         @categories = _.chain(@rows)
           .groupBy("type")
           .map((category) -> new CV.Category(category))
           .value()
-
-      ).error (response) ->
-        console.log "Error", response
 
   class CV.Row
     constructor: (object) ->
@@ -100,7 +99,7 @@ jQuery ->
       """
 
   $.fn.CV = (options) ->
-    this.each ->
+    @each ->
       if $(this).data("CV") is undefined
         plugin = new $.CV(this, options)
 

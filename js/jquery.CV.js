@@ -24,8 +24,6 @@
           return _this.categories = _.chain(_this.rows).groupBy("type").map(function(category) {
             return new CV.Category(category);
           }).value();
-        }).error(function(response) {
-          return console.log("Error", response);
         });
       };
 
