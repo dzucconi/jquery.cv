@@ -3,14 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>CV</title>
+    <title>jquery.CV</title>
     <link rel="stylesheet" href="css/application.css">
   </head>
 
   <body>
     <div id="container">
       <header>
-        <h1>CV</h1>
+        <h1>jquery.CV</h1>
       </header>
 
       <div id="main"></div>
@@ -18,13 +18,15 @@
 
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/jquery.csv-0.71.min.js"></script>
-    <script src="js/CV.js"></script>
+    <script src="js/libs/underscore-min.js"></script>
+    <script src="js/jquery.CV.js"></script>
+
     <script>
-    $(function() {
-      $("#main").CV({
-        key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"
+      $(function() {
+        $("#main").CV({
+          key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"
+        });
       });
-    });
     </script>
   </body>
 </html>
