@@ -1,4 +1,4 @@
-# jQuery.cv
+# $.cv
 
 jQuery plugin that uses a Google Docs Spreadsheet as input in constructing a relatively normative CV-style output. Documents require "Type", "Category", and "Year" columns to group content. "Type" and "Category" columns are related to one another.
 
