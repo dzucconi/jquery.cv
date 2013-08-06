@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <title>jquery.cv</title>
     <link rel="stylesheet" href="css/application.css">
-  </head>
-
-  <body>
-    <div id="container"></div>
 
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/jquery.csv-0.71.min.js"></script>
@@ -17,10 +13,15 @@
 
     <script>
       $(function() {
-        $("#container").cv({
-          key: "0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"
+        $(".cv").each(function() {
+          $(this).cv({ key: $(this).data("key") });
         });
       });
     </script>
+  </head>
+
+  <body>
+    <div class="cv" data-key="0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"></div>
+    <div class="cv" data-key="0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"></div>
   </body>
 </html>
