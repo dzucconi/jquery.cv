@@ -14,6 +14,19 @@ $("#element").cv({
 });
 ```
 
+----
+
+```html
+<div class="cv" data-key="0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"></div>
+<div class="cv" data-key="0AsxYR5Y3N6DjdHJWZDNNcjhmZ0ZSb2hFTjU0MDBjZ2c"></div>
+```
+
+```javascript
+$(".cv").each(function() {
+  $(this).cv({ key: $(this).data("key") });
+});
+```
+
 Use your own templates:
 
 ```javascript
