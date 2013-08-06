@@ -14,22 +14,13 @@ module.exports = function (grunt) {
     coffee: {
       plugin: {
         files: [{
-          expand: true,
-          cwd:    "js/",
-          src:    "*.coffee",
-          dest:   "js/",
-          ext:    ".js"
+          "js/jquery.cv.js": ["js/jquery.cv.coffee"]
         }]
       }
     },
 
     watch: {
-      files: [
-        "js/*.coffee",
-        "spec/coffeescripts/*.coffee",
-        "spec/coffeescripts/helpers/*.coffee"
-      ],
-
+      files: ["js/jquery.cv.coffee"],
       tasks: ["coffee", "growl:coffee"]
     },
 

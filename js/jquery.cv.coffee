@@ -28,7 +28,8 @@ jQuery ->
       @name = entries[0].category
       @years = _.chain(entries)
         .groupBy("year")
-        .map((year) -> new CV.Category.Year(year))
+        .sortBy((row) -> parseInt(row.year))
+        .map((row) -> new CV.Category.Year(row))
         .value().reverse()
 
   class CV.Category.Year
