@@ -1,8 +1,3 @@
-# Name    : jquery.cv
-# Author  : Damon Zucconi, http://www.damonzucconi.com, @dzucconi
-# Version : 0.0.1
-# Repo    : http://github.com/dzucconi/jquery.cv
-
 jQuery ->
   class CV
     constructor: (key) ->
