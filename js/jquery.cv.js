@@ -85,8 +85,8 @@
     };
     $.cv.prototype.defaults = {
       templates: {
-        category: _.template("<div class=\"category\">\n  <h3><%= category.name %></h3>\n\n  <% _.each(category.years, function(year) { %>\n    <div class=\"year\">\n      <h4><%= year.name %></h4>\n\n      <% _.each(year.entries, function(entry) { %>\n        <%= $.cv.prototype.defaults.templates.entry({ entry: entry }) %>\n      <% }) %>\n    </div>\n  <% }); %>\n</div>"),
-        entry: _.template("<div class=\"entry\">\n  <% if (entry.url) { %>\n    <a href=\"<%= entry.url %>\" target=\"_blank\"><%= entry.title %></a>,\n  <% } else { %>\n    <u><%= entry.title %></u>,\n  <% } %>\n\n  <%= entry.venue %>\n\n  <% if (entry.city && entry.country) { %>\n    (<%= entry.city %>, <%= entry.country %>)\n  <% } %>\n\n  <% if (entry.notes) { %>\n    - <%= entry.notes %>\n  <% } %>\n</div>")
+        category: _.template("<div class=\"jqcv-category\">\n  <h3><%= category.name %></h3>\n\n  <% _.each(category.years, function(year) { %>\n    <div class=\"jqcv-year\">\n      <h4><%= year.name %></h4>\n\n      <% _.each(year.entries, function(entry) { %>\n        <%= $.cv.prototype.defaults.templates.entry({ entry: entry }) %>\n      <% }) %>\n    </div>\n  <% }); %>\n</div>"),
+        entry: _.template("<div class=\"jqcv-entry\">\n  <% if (entry.url) { %>\n    <a href=\"<%= entry.url %>\" class=\"jqcv-title\" target=\"_blank\"><%= entry.title %></a>,\n  <% } else { %>\n    <u class=\"jqcv-title\"><%= entry.title %></u>,\n  <% } %>\n\n  <span class=\"jqcv-venue\"><%= entry.venue %></span>\n\n  <% if (entry.city && entry.country) { %>\n    <span class=\"jqcv-location\">\n      (<span class=\"jqcv-city\"><%= entry.city %></span>, <span class=\"jqcv-country\"><%= entry.country %></span>)\n    </span>\n  <% } %>\n\n  <% if (entry.notes) { %>\n    <span class=\"jqcv-notes\">\n      <span class=\"jqcv-separator\">-</span>\n      <span class=\"jqcv-notes-body\"><%= entry.notes %></span>\n    </span>\n  <% } %>\n</div>")
       }
     };
     return $.fn.cv = function(options) {

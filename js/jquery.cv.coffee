@@ -60,11 +60,11 @@ jQuery ->
   $.cv::defaults =
     templates:
       category: _.template """
-        <div class="category">
+        <div class="jqcv-category">
           <h3><%= category.name %></h3>
 
           <% _.each(category.years, function(year) { %>
-            <div class="year">
+            <div class="jqcv-year">
               <h4><%= year.name %></h4>
 
               <% _.each(year.entries, function(entry) { %>
@@ -76,21 +76,26 @@ jQuery ->
       """
 
       entry: _.template """
-        <div class="entry">
+        <div class="jqcv-entry">
           <% if (entry.url) { %>
-            <a href="<%= entry.url %>" target="_blank"><%= entry.title %></a>,
+            <a href="<%= entry.url %>" class="jqcv-title" target="_blank"><%= entry.title %></a>,
           <% } else { %>
-            <u><%= entry.title %></u>,
+            <u class="jqcv-title"><%= entry.title %></u>,
           <% } %>
 
-          <%= entry.venue %>
+          <span class="jqcv-venue"><%= entry.venue %></span>
 
           <% if (entry.city && entry.country) { %>
-            (<%= entry.city %>, <%= entry.country %>)
+            <span class="jqcv-location">
+              (<span class="jqcv-city"><%= entry.city %></span>, <span class="jqcv-country"><%= entry.country %></span>)
+            </span>
           <% } %>
 
           <% if (entry.notes) { %>
-            - <%= entry.notes %>
+            <span class="jqcv-notes">
+              <span class="jqcv-separator">-</span>
+              <span class="jqcv-notes-body"><%= entry.notes %></span>
+            </span>
           <% } %>
         </div>
       """
